@@ -43,7 +43,7 @@ namespace X01.App.Alarm
             builder.Services.AddSingleton<ManageMetaPageModel>();
 
             builder.Services.AddTransientWithShellRoute<ProjectDetailPage, ProjectDetailPageModel>("project");
-            builder.Services.AddTransientWithShellRoute<TaskDetailPage, TaskDetailPageModel>("task");
+            builder.Services.AddTransientWithShellRoute<TaskDetailPage, AlarmPageModel>("task");
 
             return builder.Build();
         }

@@ -4,7 +4,7 @@
              xmlns:sf="clr-namespace:Syncfusion.Maui.Toolkit.TextInputLayout;assembly=Syncfusion.Maui.Toolkit"
              xmlns:pageModel="clr-namespace:X01.App.Alarm.PageModels"
              xmlns:models="clr-namespace:X01.App.Alarm.Models"
-             x:DataType="pageModel:TaskDetailPageModel"
+             x:DataType="pageModel:AlarmPageModel"
              x:Class="X01.App.Alarm.Pages.TaskDetailPage"
              Title="Task">
 

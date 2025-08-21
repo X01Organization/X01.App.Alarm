@@ -2,7 +2,7 @@ namespace X01.App.Alarm.Pages
 {
     public partial class TaskDetailPage : ContentPage
     {
-        public TaskDetailPage(TaskDetailPageModel model)
+        public TaskDetailPage(AlarmPageModel model)
         {
             InitializeComponent();
             BindingContext = model;

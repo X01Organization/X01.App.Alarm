@@ -6,7 +6,7 @@ using X01.App.Alarm.Services;
 
 namespace X01.App.Alarm.PageModels
 {
-    public partial class TaskDetailPageModel : ObservableObject, IQueryAttributable
+    public partial class AlarmPageModel : ObservableObject, IQueryAttributable
     {
         public const string ProjectQueryKey = "project";
         private ProjectTask? _task;
@@ -34,7 +34,7 @@ namespace X01.App.Alarm.PageModels
         [ObservableProperty]
         private bool _isExistingProject;
 
-        public TaskDetailPageModel(ProjectRepository projectRepository, TaskRepository taskRepository, ModalErrorHandler errorHandler)
+        public AlarmPageModel(ProjectRepository projectRepository, TaskRepository taskRepository, ModalErrorHandler errorHandler)
         {
             _projectRepository = projectRepository;
             _taskRepository = taskRepository;
