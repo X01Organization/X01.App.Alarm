@@ -56,8 +56,8 @@ namespace X01.App.Alarm.Data
         /// <summary>
         /// Retrieves a list of all tasks from the database.
         /// </summary>
-        /// <returns>A list of <see cref="ProjectTask"/> objects.</returns>
-        public async Task<List<ProjectTask>> ListAsync()
+        /// <returns>A list of <see cref="AlarmRecord"/> objects.</returns>
+        public async Task<List<AlarmRecord>> ListAsync()
         {
             await Init();
             await using var connection = new SqliteConnection(Constants.DatabasePath);
@@ -65,12 +65,12 @@ namespace X01.App.Alarm.Data
 
             var selectCmd = connection.CreateCommand();
             selectCmd.CommandText = "SELECT * FROM Task";
-            var tasks = new List<ProjectTask>();
+            var tasks = new List<AlarmRecord>();
 
             await using var reader = await selectCmd.ExecuteReaderAsync();
             while (await reader.ReadAsync())
             {
-                tasks.Add(new ProjectTask
+                tasks.Add(new AlarmRecord
                 {
                     ID = reader.GetInt32(0),
                     Title = reader.GetString(1),
@@ -86,8 +86,8 @@ namespace X01.App.Alarm.Data
         /// Retrieves a list of tasks associated with a specific project.
         /// </summary>
         /// <param name="projectId">The ID of the project.</param>
-        /// <returns>A list of <see cref="ProjectTask"/> objects.</returns>
-        public async Task<List<ProjectTask>> ListAsync(int projectId)
+        /// <returns>A list of <see cref="AlarmRecord"/> objects.</returns>
+        public async Task<List<AlarmRecord>> ListAsync(int projectId)
         {
             await Init();
             await using var connection = new SqliteConnection(Constants.DatabasePath);
@@ -96,12 +96,12 @@ namespace X01.App.Alarm.Data
             var selectCmd = connection.CreateCommand();
             selectCmd.CommandText = "SELECT * FROM Task WHERE ProjectID = @projectId";
             selectCmd.Parameters.AddWithValue("@projectId", projectId);
-            var tasks = new List<ProjectTask>();
+            var tasks = new List<AlarmRecord>();
 
             await using var reader = await selectCmd.ExecuteReaderAsync();
             while (await reader.ReadAsync())
             {
-                tasks.Add(new ProjectTask
+                tasks.Add(new AlarmRecord
                 {
                     ID = reader.GetInt32(0),
                     Title = reader.GetString(1),
@@ -117,8 +117,8 @@ namespace X01.App.Alarm.Data
         /// Retrieves a specific task by its ID.
         /// </summary>
         /// <param name="id">The ID of the task.</param>
-        /// <returns>A <see cref="ProjectTask"/> object if found; otherwise, null.</returns>
-        public async Task<ProjectTask?> GetAsync(int id)
+        /// <returns>A <see cref="AlarmRecord"/> object if found; otherwise, null.</returns>
+        public async Task<AlarmRecord?> GetAsync(int id)
         {
             await Init();
             await using var connection = new SqliteConnection(Constants.DatabasePath);
@@ -131,7 +131,7 @@ namespace X01.App.Alarm.Data
             await using var reader = await selectCmd.ExecuteReaderAsync();
             if (await reader.ReadAsync())
             {
-                return new ProjectTask
+                return new AlarmRecord
                 {
                     ID = reader.GetInt32(0),
                     Title = reader.GetString(1),
@@ -148,7 +148,7 @@ namespace X01.App.Alarm.Data
         /// </summary>
         /// <param name="item">The task to save.</param>
         /// <returns>The ID of the saved task.</returns>
-        public async Task<int> SaveItemAsync(ProjectTask item)
+        public async Task<int> SaveItemAsync(AlarmRecord item)
         {
             await Init();
             await using var connection = new SqliteConnection(Constants.DatabasePath);
@@ -186,7 +186,7 @@ namespace X01.App.Alarm.Data
         /// </summary>
         /// <param name="item">The task to delete.</param>
         /// <returns>The number of rows affected.</returns>
-        public async Task<int> DeleteItemAsync(ProjectTask item)
+        public async Task<int> DeleteItemAsync(AlarmRecord item)
         {
             await Init();
             await using var connection = new SqliteConnection(Constants.DatabasePath);

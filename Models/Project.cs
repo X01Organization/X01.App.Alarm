@@ -14,7 +14,7 @@ namespace X01.App.Alarm.Models
 
         public Category? Category { get; set; }
 
-        public List<ProjectTask> Tasks { get; set; } = [];
+        public List<AlarmRecord> Tasks { get; set; } = [];
 
         public List<Tag> Tags { get; set; } = [];
 

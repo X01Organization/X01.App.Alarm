@@ -26,7 +26,7 @@ namespace X01.App.Alarm.Pages.Controls
         {
             var checkbox = (CheckBox)sender;
 
-            if (checkbox.BindingContext is not ProjectTask task)
+            if (checkbox.BindingContext is not AlarmRecord task)
                 return;
 
             if (task.IsCompleted == e.Value)

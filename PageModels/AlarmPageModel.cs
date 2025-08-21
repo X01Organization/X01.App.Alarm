@@ -9,7 +9,7 @@ namespace X01.App.Alarm.PageModels
     public partial class AlarmPageModel : ObservableObject, IQueryAttributable
     {
         public const string ProjectQueryKey = "project";
-        private ProjectTask? _task;
+        private AlarmRecord? _task;
         private bool _canDelete;
         private readonly ProjectRepository _projectRepository;
         private readonly TaskRepository _taskRepository;
@@ -68,7 +68,7 @@ namespace X01.App.Alarm.PageModels
             }
             else
             {
-                _task = new ProjectTask();
+                _task = new AlarmRecord();
             }
 
             // If the project is new, we don't need to load the project dropdown
@@ -101,7 +101,7 @@ namespace X01.App.Alarm.PageModels
             }
             else
             {
-                _task = new ProjectTask()
+                _task = new AlarmRecord()
                 {
                     ProjectID = Project?.ID ?? 0
                 };

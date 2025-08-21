@@ -2,7 +2,7 @@ using System.Text.Json.Serialization;
 
 namespace X01.App.Alarm.Models
 {
-    public class ProjectTask
+    public class AlarmRecord
     {
         public int ID { get; set; }
         public string Title { get; set; } = string.Empty;

@@ -20,7 +20,7 @@ namespace X01.App.Alarm.PageModels
         private string _description = string.Empty;
 
         [ObservableProperty]
-        private List<ProjectTask> _tasks = [];
+        private List<AlarmRecord> _tasks = [];
 
         [ObservableProperty]
         private List<Category> _categories = [];
@@ -150,7 +150,7 @@ namespace X01.App.Alarm.PageModels
         }
 
         [RelayCommand]
-        private async Task TaskCompleted(ProjectTask task)
+        private async Task TaskCompleted(AlarmRecord task)
         {
             await _taskRepository.SaveItemAsync(task);
             OnPropertyChanged(nameof(HasCompletedTasks));
@@ -232,7 +232,7 @@ namespace X01.App.Alarm.PageModels
         }
 
         [RelayCommand]
-        private Task NavigateToTask(ProjectTask task) =>
+        private Task NavigateToTask(AlarmRecord task) =>
             Shell.Current.GoToAsync($"task?id={task.ID}");
 
         [RelayCommand]

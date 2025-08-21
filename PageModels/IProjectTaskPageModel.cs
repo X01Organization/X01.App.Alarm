@@ -5,7 +5,7 @@ namespace X01.App.Alarm.PageModels
 {
     public interface IProjectTaskPageModel
     {
-        IAsyncRelayCommand<ProjectTask> NavigateToTaskCommand { get; }
+        IAsyncRelayCommand<AlarmRecord> NavigateToTaskCommand { get; }
         bool IsBusy { get; }
     }
 }

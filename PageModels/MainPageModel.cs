@@ -21,7 +21,7 @@ namespace X01.App.Alarm.PageModels
         private List<Brush> _todoCategoryColors = [];
 
         [ObservableProperty]
-        private List<ProjectTask> _tasks = [];
+        private List<AlarmRecord> _tasks = [];
 
         [ObservableProperty]
         private List<Project> _projects = [];
@@ -138,7 +138,7 @@ namespace X01.App.Alarm.PageModels
         }
 
         [RelayCommand]
-        private Task TaskCompleted(ProjectTask task)
+        private Task TaskCompleted(AlarmRecord task)
         {
             OnPropertyChanged(nameof(HasCompletedTasks));
             return _taskRepository.SaveItemAsync(task);
@@ -153,7 +153,7 @@ namespace X01.App.Alarm.PageModels
             => Shell.Current.GoToAsync($"project?id={project.ID}");
 
         [RelayCommand]
-        private Task NavigateToTask(ProjectTask task)
+        private Task NavigateToTask(AlarmRecord task)
             => Shell.Current.GoToAsync($"task?id={task.ID}");
 
         [RelayCommand]
