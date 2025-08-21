@@ -5,8 +5,8 @@
              xmlns:pageModel="clr-namespace:X01.App.Alarm.PageModels"
              xmlns:models="clr-namespace:X01.App.Alarm.Models"
              x:DataType="pageModel:AlarmPageModel"
-             x:Class="X01.App.Alarm.Pages.TaskDetailPage"
-             Title="Task">
+             x:Class="X01.App.Alarm.Pages.AlarmPage"
+             Title="Alarm">
 
     <ContentPage.ToolbarItems>
         <ToolbarItem
@@ -16,11 +16,63 @@
             Priority="0"
             IconImageSource="{StaticResource IconDelete}"
             SemanticProperties.Description="Delete" />
-    </ContentPage.ToolbarItems>        
+
+        <ToolbarItem
+            Text="Save"
+            Command="{Binding DeleteCommand}"
+            Order="Primary"
+            Priority="0"
+            IconImageSource="{StaticResource IconSave}"
+            SemanticProperties.Description="Save" />
+
+        <ToolbarItem
+            Text="Cancel"
+            Command="{Binding DeleteCommand}"
+            Order="Primary"
+            Priority="0"
+            IconImageSource="{StaticResource IconCancel}"
+            SemanticProperties.Description="Cancel" />
+
+    </ContentPage.ToolbarItems>
 
     <Grid>
         <ScrollView>
             <VerticalStackLayout Spacing="{StaticResource LayoutSpacing}" Padding="{StaticResource LayoutPadding}">
+	    
+	       <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto" 
+      ColumnDefinitions="Auto,*" 
+      ColumnSpacing="20" 
+      RowSpacing="10" 
+      Padding="10"
+      VerticalOptions="Center"
+      >
+
+                <!-- Title -->
+                <Label Grid.Row="0" Grid.Column="0" Text="Title" FontSize="18" VerticalTextAlignment="Center"/>
+                <Entry Grid.Row="0" Grid.Column="1" Text="{Binding Title}" SemanticProperties.Description="Title" />
+
+                <!-- Time -->
+                <Label Grid.Row="1" Grid.Column="0" Text="Time" FontSize="18" VerticalTextAlignment="Center"/>
+                <TimePicker Grid.Row="1" Grid.Column="1" Time="{Binding Time}" SemanticProperties.Description="Time" />
+
+                <!-- Date -->
+                <Label Grid.Row="2" Grid.Column="0" Text="Date" FontSize="18" VerticalTextAlignment="Center"/>
+                <DatePicker Grid.Row="2" Grid.Column="1" Date="{Binding Date}" SemanticProperties.Description="Date" />
+
+                <!-- Repeat -->
+                <Label Grid.Row="3" Grid.Column="0" Text="Repeat" FontSize="18" VerticalTextAlignment="Center"/>
+                <Switch Grid.Row="3" Grid.Column="1" IsToggled="{Binding Repeat}" SemanticProperties.Description="Repeat" />
+
+                <!-- Share -->
+                <Label Grid.Row="4" Grid.Column="0" Text="Share" FontSize="18" VerticalTextAlignment="Center"/>
+                <Switch Grid.Row="4" Grid.Column="1" IsToggled="{Binding Share}" SemanticProperties.Description="Share" />
+
+                <!-- Enable -->
+                <Label Grid.Row="5" Grid.Column="0" Text="Enable" FontSize="18" VerticalTextAlignment="Center"/>
+                <Switch Grid.Row="5" Grid.Column="1" IsToggled="{Binding Enable}" SemanticProperties.Description="Enable" />
+
+            </Grid>
+	    
                 <sf:SfTextInputLayout Hint="Task">
                     <Entry
                         Text="{Binding Title}"
