@@ -6,26 +6,26 @@
     xmlns:sf="clr-namespace:Syncfusion.Maui.Toolkit.SegmentedControl;assembly=Syncfusion.Maui.Toolkit"
     xmlns:pages="clr-namespace:X01.App.Alarm.Pages"
     Shell.FlyoutBehavior="Flyout"
-    Title="X01.App.Alarm">
-
+    Title="xalarm">
+    <TabBar >
     <ShellContent
-        Title="Dashboard"
+        Title="Alarms"
         Icon="{StaticResource IconDashboard}"
         ContentTemplate="{DataTemplate pages:MainPage}"
         Route="main" />
 
     <ShellContent
-        Title="Projects"
+        Title="Users"
         Icon="{StaticResource IconProjects}"
         ContentTemplate="{DataTemplate pages:ProjectListPage}"
         Route="projects" />
 
     <ShellContent
-        Title="Manage Meta"
+        Title="Groups"
         Icon="{StaticResource IconMeta}"
         ContentTemplate="{DataTemplate pages:ManageMetaPage}"
         Route="manage" />
-
+    </TabBar>
     <Shell.FlyoutFooter>
         <Grid Padding="15">
             <sf:SfSegmentedControl x:Name="ThemeSegmentedControl" 
